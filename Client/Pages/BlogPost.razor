@@ -1,0 +1,42 @@
+﻿@page "/BlogPost"
+@using Blog.Shared
+@inject HttpClient Http
+
+<h1>  Post  </h1>
+
+@if (blogEntry == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <h1> @blogEntry.Header</h1>
+
+    <p> @blogEntry.Body </p>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Tags</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var tags in blogEntry.Tags)
+            {
+                <tr>
+                    <td>@tags</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
+
+@code {
+    private Entry blogEntry;
+
+    protected override async Task OnInitializedAsync()
+    {
+        //int number = 4;
+        blogEntry = await Http.GetFromJsonAsync<Entry>("BlogEntry");
+    }
+}
