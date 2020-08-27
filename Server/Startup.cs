@@ -5,7 +5,12 @@ using Microsoft.AspNetCore.ResponseCompression;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore.SqlServer;
 using System.Linq;
+using Blog.Server.Database;
+using Blog.Server.Controllers;
+using Blog.Server.Database.Entities;
 
 namespace Blog.Server
 {
@@ -13,15 +18,18 @@ namespace Blog.Server
     {
         public Startup(IConfiguration configuration)
         {
-            Configuration = configuration;
+            _configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+        public IConfiguration _configuration { get; }
 
         // This method gets called by the runtime. Use this method to add services to the container.
         // For more information on how to configure your application, visit https://go.microsoft.com/fwlink/?LinkID=398940
         public void ConfigureServices(IServiceCollection services)
         {
+            var WebsiteDbConnectionString = _configuration.GetConnectionString("SqlConnection");
+
+            services.AddDbContext<WebsiteDbContext>(options => options.UseSqlServer(WebsiteDbConnectionString));
 
             services.AddControllersWithViews();
             services.AddRazorPages();

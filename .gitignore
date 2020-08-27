@@ -195,3 +195,4 @@ Shared/bin/Debug/netstandard2.1/Blog.Shared.deps.json
 Shared/obj/Blog.Shared.csproj.nuget.dgspec.json
 Shared/obj/Debug/netstandard2.1/Blog.Shared.csproj.FileListAbsolute.txt
 Shared/obj/project.assets.json
+Server/obj/Blog.Server.csproj.nuget.g.props

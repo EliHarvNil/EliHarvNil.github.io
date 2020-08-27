@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
+using Blog.Server.Database;
+using Blog.Server.Database.Entities;
 using Blog.Shared;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
@@ -13,24 +15,21 @@ namespace Blog.Server.Controllers
     [Route("[controller]")]
     public class BlogEntryController : ControllerBase
     {
-        private Entry entry = new Entry {
-            Header = "Test Entry",
-            Body = "Meow Meow"
-        };
-        private readonly ILogger<BlogEntryController> logger;
+        private readonly WebsiteDbContext _websiteDbContext;
+        private readonly ILogger<BlogEntryController> _logger;
 
-        public BlogEntryController(ILogger<BlogEntryController> logger)
+        public BlogEntryController(WebsiteDbContext websiteDbContext, ILogger<BlogEntryController> logger)
         {
-            this.logger = logger;
+            _websiteDbContext = websiteDbContext;
+            _logger = logger;
         }
 
         [HttpGet]
-        public Entry Get()
+        public BlogEntry Get()
         {
-            entry.Tags = new List<string>();
-            entry.Tags.Add("one");
+            var firstEntry = _websiteDbContext.BlogPosts.First();
 
-            return entry;
+            return null;
         }
 
     }

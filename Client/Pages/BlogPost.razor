@@ -1,5 +1,5 @@
 ﻿@page "/BlogPost"
-@using Blog.Shared
+@using Blog.Shared.Entities
 @inject HttpClient Http
 
 <h1>  Post  </h1>
@@ -32,11 +32,11 @@ else
 }
 
 @code {
-    private Entry blogEntry;
+    private BlogEntry blogEntry;
 
     protected override async Task OnInitializedAsync()
     {
         //int number = 4;
-        blogEntry = await Http.GetFromJsonAsync<Entry>("BlogEntry");
+        blogEntry = await Http.GetFromJsonAsync<BlogEntry>("BlogEntry");
     }
 }
