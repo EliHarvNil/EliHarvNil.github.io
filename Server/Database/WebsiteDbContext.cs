@@ -1,11 +1,8 @@
-﻿using System;
+﻿using Blog.Server.Database.Entities;
+using Microsoft.EntityFrameworkCore;
+using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.InteropServices.WindowsRuntime;
-using System.Threading.Tasks;
-using Microsoft.EntityFrameworkCore;
-using Blog.Server.Database.Entities;
-using System.Runtime;
 
 namespace Blog.Server.Database
 {
@@ -16,21 +13,13 @@ namespace Blog.Server.Database
 
         public virtual DbSet<BlogEntry> BlogPosts { get; set; }
 
-        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        //{
-        //    if (!optionsBuilder.IsConfigured)
-        //    {
-        //        optionsBuilder.UseSqlServer("SHOULDTHROWEXCEPTION");
-        //    }
-        //}
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             modelBuilder.Entity<BlogEntry>(entity =>
             {
-                //entity.Property(e => e.Id)
-                //    .HasColumnType("int")
-                //    .HasColumnName("Id");
+                entity.Property(e => e.Id)
+                    .HasColumnType("int")
+                    .HasColumnName("Id");
 
                 entity.Property(e => e.CreateDate)
                     .HasColumnType("datetime2(2)")

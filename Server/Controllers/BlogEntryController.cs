@@ -1,13 +1,11 @@
-﻿using System;
+﻿using Blog.Server.Database;
+using Blog.Shared.Entities;
+using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore.Internal;
+using Microsoft.Extensions.Logging;
 using System.Collections.Generic;
 using System.Linq;
-using System.Runtime.CompilerServices;
 using System.Threading.Tasks;
-using Blog.Server.Database;
-using Blog.Server.Database.Entities;
-using Blog.Shared;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Logging;
 
 namespace Blog.Server.Controllers
 {
@@ -29,7 +27,36 @@ namespace Blog.Server.Controllers
         {
             var firstEntry = _websiteDbContext.BlogPosts.First();
 
-            return firstEntry;
+            return (Blog.Shared.Entities.BlogEntry)firstEntry;
+        }
+
+        [HttpGet]
+        [Route("{id}")]
+        public BlogEntry Get(int id)
+        {
+            var entry = _websiteDbContext.BlogPosts.Where(bp => bp.Id == id).FirstOrDefault();
+
+            if(entry == default)
+            {
+                return null;
+            }
+
+            return (BlogEntry)entry;
+        }
+
+        [HttpGet]
+        [Route("Teases/{countOfTeases}")]
+        public List<BlogEntryTease> GetBlogEntryTeases(int countOfTeases)
+        {
+            var blogEntries = _websiteDbContext.BlogPosts.OrderByDescending(bp => bp.CreateDate).Take<Database.Entities.BlogEntry>(countOfTeases).ToList();
+
+            var blogEntryTeases = new List<BlogEntryTease>(countOfTeases);
+            foreach(var entry in blogEntries)
+            {
+                blogEntryTeases.Add( new BlogEntryTease((BlogEntry)entry));
+            }
+
+            return blogEntryTeases;
         }
 
     }

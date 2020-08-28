@@ -14,6 +14,5 @@ namespace Blog.Shared.Entities
         public string Body { get; set; }
         public string HeaderImageRoute { get; set; }
         public List<string> Tags { get; set; }
-
     }
 }

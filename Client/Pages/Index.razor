@@ -1,7 +1,47 @@
 ﻿@page "/"
+@using Blog.Shared.Entities
+@inject HttpClient _http
+@inject NavigationManager navManager
 
 <h1>Hello, world!</h1>
 
-Welcome to your new app.
+@if (blogEntryTeases == null)
+{
+    <p><em>Loading...</em></p>
+}
+else
+{
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Blog</th>
+                <th> Post Date</th>
+                <th> Id </th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach( var tease in blogEntryTeases)
+            {
+                <tr @onclick="() => ClickedRow(tease)" >
+                    <td> @tease.Header </td>
+                    <td> @tease.CreateDate</td>
+                    <td> @tease.Id </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+}
 
-<SurveyPrompt Title="How is Blazor working for you?" />
+@code {
+    private List<BlogEntryTease> blogEntryTeases;
+
+    protected override async Task OnInitializedAsync()
+    {
+        blogEntryTeases = await _http.GetFromJsonAsync<List<BlogEntryTease>>("BlogEntry/Teases/10");
+    }
+
+    public void ClickedRow(BlogEntryTease tease)
+    {
+        navManager.NavigateTo($"BlogPost/{tease.Id}");
+    }
+}
