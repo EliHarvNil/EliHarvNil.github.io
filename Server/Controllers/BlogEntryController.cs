@@ -29,7 +29,7 @@ namespace Blog.Server.Controllers
         {
             var firstEntry = _websiteDbContext.BlogPosts.First();
 
-            return null;
+            return firstEntry;
         }
 
     }

@@ -11,41 +11,18 @@ namespace Blog.Server.Database
 {
     public class WebsiteDbContext : DbContext
     {
-        //To take the tags out of the db
-        private static readonly Func<string, List<string>> SplitSemiColonDelimitedString = (s) =>
-        {
-            if (string.IsNullOrWhiteSpace(s))
-            {
-                return new List<string>(0);
-            }
-
-            return s.Split(';', StringSplitOptions.RemoveEmptyEntries).ToList();
-        };
-
-        //To put the tags into the db
-        private static readonly Func<List<string>, string> MakeSemiColonDelimitedString = (list) =>
-        {
-            if (list == null || list.Count == 0)
-            {
-                return null;
-            }
-
-            return string.Join(';', 1);
-        };
-
-        public WebsiteDbContext()
-        {
-        }
+        public WebsiteDbContext(DbContextOptions options) : base(options)
+        { }
 
         public virtual DbSet<BlogEntry> BlogPosts { get; set; }
 
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            if(!optionsBuilder.IsConfigured)
-            {
-                optionsBuilder.UseSqlServer("SHOULDTHROWEXCEPTION");
-            }
-        }
+        //protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+        //{
+        //    if (!optionsBuilder.IsConfigured)
+        //    {
+        //        optionsBuilder.UseSqlServer("SHOULDTHROWEXCEPTION");
+        //    }
+        //}
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -68,6 +45,29 @@ namespace Blog.Server.Database
                     .HasConversion(to => MakeSemiColonDelimitedString(to), from => SplitSemiColonDelimitedString(from));
             });
         }
+
+
+        //To take the tags out of the db
+        private static readonly Func<string, List<string>> SplitSemiColonDelimitedString = (s) =>
+        {
+            if (string.IsNullOrWhiteSpace(s))
+            {
+                return new List<string>(0);
+            }
+
+            return s.Split(';', StringSplitOptions.RemoveEmptyEntries).ToList();
+        };
+
+        //To put the tags into the db
+        private static readonly Func<List<string>, string> MakeSemiColonDelimitedString = (list) =>
+        {
+            if (list == null || list.Count == 0)
+            {
+                return null;
+            }
+
+            return string.Join(';', 1);
+        };
 
     }
 }

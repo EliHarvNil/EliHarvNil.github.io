@@ -29,7 +29,10 @@ namespace Blog.Server
         {
             var WebsiteDbConnectionString = _configuration.GetConnectionString("SqlConnection");
 
-            services.AddDbContext<WebsiteDbContext>(options => options.UseSqlServer(WebsiteDbConnectionString));
+            services.AddDbContext<WebsiteDbContext>( options =>
+            {
+                options.UseSqlServer(WebsiteDbConnectionString);
+            });
 
             services.AddControllersWithViews();
             services.AddRazorPages();
