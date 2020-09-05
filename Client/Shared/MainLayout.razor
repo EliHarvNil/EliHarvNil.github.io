@@ -1,14 +1,19 @@
 ﻿@inherits LayoutComponentBase
 
-<div class="sidebar">
+@*<div class="sidebar">
     <NavMenu />
-</div>
+</div>*@
 
 <div class="main">
+     
+    @*This is the Top Row *@
     <div class="top-row px-4">
-        <a href="http://blazor.net" target="_blank" class="ml-md-auto">About</a>
+        <NavLink class="nav-link" href="" Match="NavLinkMatch.All">
+            <span class="oi oi-home" aria-hidden="true"></span> Home
+        </NavLink>
     </div>
 
+    @* Main body / post placements*@
     <div class="content px-4">
         @Body
     </div>
