@@ -10,6 +10,7 @@
 </head>
 
 <body>
+    <app>@(await Html.RenderComponentAsync<Blog.Client.App>(RenderMode.Static))</app>
     <div class="main">
         <div class="content px-4">
             @RenderBody()
