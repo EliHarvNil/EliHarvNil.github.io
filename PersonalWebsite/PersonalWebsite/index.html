@@ -13,23 +13,7 @@
     <script src="dist/app.js" type="module"></script>
 </head>
 <body>
-    <header class="site-header">
-        <a class="wordmark" href="#top" aria-label="Elias Harvey-Nilsson, home">EHN<span>.</span></a>
-        <nav class="main-nav" aria-label="Main navigation">
-            <a href="#about">Profile</a>
-            <a href="#work">Projects</a>
-            <a href="#contact">Contact</a>
-        </nav>
-        <label class="theme-control" for="theme-picker">
-            <span class="theme-icon" aria-hidden="true">◐</span>
-            <span class="visually-hidden">Color theme</span>
-            <select id="theme-picker" aria-label="Color theme">
-                <option value="midnight">Midnight</option>
-                <option value="paper">Paper</option>
-                <option value="forest">Forest</option>
-            </select>
-        </label>
-    </header>
+    <site-header page-title="Software Engineer" title-layout="site-first"></site-header>
 
     <main id="top">
         <section class="hero page-shell" aria-labelledby="hero-title">
@@ -67,35 +51,52 @@
             </div>
         </section>
 
-        <section class="work-section section-shell" id="work" aria-labelledby="work-title">
+        <section class="experience-section section-shell" id="experience" aria-labelledby="experience-title">
             <div class="work-heading">
                 <div>
-                    <p class="eyebrow">PROJECT HIGHLIGHTS <span class="heading-number">02</span></p>
-                    <h2 id="work-title">Selected projects<span class="accent-text">.</span></h2>
+                    <p class="eyebrow">CAREER <span class="heading-number">02</span></p>
+                    <h2 id="experience-title">Work history<span class="accent-text">.</span></h2>
                 </div>
-                <p class="work-intro">Example entries for your project experience. Replace them with projects you’ve actually worked on.</p>
+                <p class="work-intro">Add your roles, dates, and measurable contributions here to build a resume-ready career history.</p>
             </div>
-            <div class="project-grid">
-                <article class="project-card">
-                    <div class="project-meta"><div><p class="project-type">PRODUCT ENGINEERING · 2025</p><h3>Insight, at a glance.</h3></div><span class="project-arrow" aria-hidden="true">↗</span></div>
-                    <p class="project-description">A sample analytics experience that brings the important signals into focus.</p>
-                    <div class="project-tags"><span>TypeScript</span><span>Data visualization</span><span>UI design</span></div>
+            <div class="experience-list">
+                <article class="experience-entry">
+                    <div class="experience-date">YYYY — Present</div>
+                    <div class="experience-details">
+                        <h3>Job title</h3>
+                        <p class="experience-company">Company or organization · Location</p>
+                        <ul>
+                            <li>Describe a key responsibility, project, or achievement and the result it delivered.</li>
+                            <li>Include relevant tools, technologies, or measurable outcomes.</li>
+                        </ul>
+                    </div>
                 </article>
-                <article class="project-card">
-                    <div class="project-meta"><div><p class="project-type">OPEN SOURCE · 2024</p><h3>Tools for the makers.</h3></div><span class="project-arrow" aria-hidden="true">↗</span></div>
-                    <p class="project-description">A sample developer toolkit built to make everyday workflows a little smoother.</p>
-                    <div class="project-tags"><span>Node.js</span><span>Automation</span><span>Open source</span></div>
-                </article>
-                <article class="project-card">
-                    <div class="project-meta"><div><p class="project-type">COMMUNITY · 2024</p><h3>Growing together.</h3></div><span class="project-arrow" aria-hidden="true">↗</span></div>
-                    <p class="project-description">A sample community space connecting people around shared interests.</p>
-                    <div class="project-tags"><span>Full stack</span><span>Community</span><span>Accessibility</span></div>
+                <article class="experience-entry">
+                    <div class="experience-date">YYYY — YYYY</div>
+                    <div class="experience-details">
+                        <h3>Previous job title</h3>
+                        <p class="experience-company">Company or organization · Location</p>
+                        <ul>
+                            <li>Summarize your contribution and its impact using specific, active language.</li>
+                        </ul>
+                    </div>
                 </article>
             </div>
         </section>
 
+        <section class="work-section section-shell" id="work" aria-labelledby="work-title">
+            <div class="work-heading">
+                <div>
+                    <p class="eyebrow">PROJECT HIGHLIGHTS <span class="heading-number">03</span></p>
+                    <h2 id="work-title">Selected projects<span class="accent-text">.</span></h2>
+                </div>
+                <p class="work-intro">Example entries for your project experience. Replace them with projects you’ve actually worked on.</p>
+            </div>
+            <div class="project-grid" aria-live="polite" aria-busy="true"></div>
+        </section>
+
         <section class="contact-section section-shell" id="contact" aria-labelledby="contact-title">
-            <p class="eyebrow">HAVE A GOOD ONE IN MIND? <span class="heading-number">03</span></p>
+            <p class="eyebrow">HAVE A GOOD ONE IN MIND? <span class="heading-number">04</span></p>
             <div class="contact-layout">
                 <h2 id="contact-title">Let’s make<br>something <span class="accent-text">matter.</span></h2>
                 <div class="contact-copy"><p>I’m always happy to meet good people and hear about interesting problems.</p><a class="button button-primary" href="mailto:hello@example.com">Get in touch <span aria-hidden="true">↗</span></a></div>
@@ -103,10 +104,6 @@
         </section>
     </main>
 
-    <footer class="site-footer page-shell">
-        <a class="wordmark footer-wordmark" href="#top">EHN<span>.</span></a>
-        <p>Software Engineer</p>
-        <p>© <span id="current-year"></span> Elias Harvey-Nilsson</p>
-    </footer>
+    <site-footer></site-footer>
 </body>
 </html>
