@@ -1,0 +1,7 @@
+PersonalWebsite/PersonalWebsite/dist/
+PersonalWebsite/PersonalWebsite/node_modules/
+/.github
+/.vs
+/PersonalWebsite/.vs
+/PersonalWebsite/PersonalWebsite/.vscode
+/PersonalWebsite/PersonalWebsite/obj

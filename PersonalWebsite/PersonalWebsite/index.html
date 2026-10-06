@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en" data-theme="midnight">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#101311">
+    <meta name="description" content="The personal portfolio of a software engineer who builds and collaborates.">
+    <title>Elias Harvey-Nilsson — Software Engineer</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="dist/app.js" type="module"></script>
+</head>
+<body>
+    <header class="site-header">
+        <a class="wordmark" href="#top" aria-label="Elias Harvey-Nilsson, home">EHN<span>.</span></a>
+        <nav class="main-nav" aria-label="Main navigation">
+            <a href="#about">Profile</a>
+            <a href="#work">Projects</a>
+            <a href="#contact">Contact</a>
+        </nav>
+        <label class="theme-control" for="theme-picker">
+            <span class="theme-icon" aria-hidden="true">◐</span>
+            <span class="visually-hidden">Color theme</span>
+            <select id="theme-picker" aria-label="Color theme">
+                <option value="midnight">Midnight</option>
+                <option value="paper">Paper</option>
+                <option value="forest">Forest</option>
+            </select>
+        </label>
+    </header>
+
+    <main id="top">
+        <section class="hero page-shell" aria-labelledby="hero-title">
+            <div class="hero-copy">
+                <p class="eyebrow"><span class="status-dot"></span> SOFTWARE ENGINEER <span class="eyebrow-divider">/</span> OPEN TO OPPORTUNITIES</p>
+                <h1 id="hero-title">Elias<br><span class="accent-text">Harvey-Nilsson.</span></h1>
+                <p class="hero-role">Software Engineer</p>
+                <p class="hero-description">I build clear, dependable digital experiences and enjoy turning complex problems into useful software.</p>
+                <div class="hero-actions">
+                    <a class="button button-primary" href="#work">View projects <span aria-hidden="true">↘</span></a>
+                    <a class="text-link" href="mailto:hello@example.com">Email me <span aria-hidden="true">↗</span></a>
+                </div>
+                <div class="hero-note"><span class="note-line"></span><span>Focused on thoughtful software and collaborative teams.</span></div>
+            </div>
+            <div class="hero-summary">
+                <p class="eyebrow">CORE STRENGTHS</p>
+                <ul class="strength-list">
+                    <li>Product engineering</li>
+                    <li>Web applications</li>
+                    <li>Accessible interfaces</li>
+                    <li>Design systems</li>
+                    <li>Developer tools</li>
+                </ul>
+            </div>
+        </section>
+
+        <section class="about-section section-shell" id="about" aria-labelledby="about-title">
+            <div class="section-heading">
+                <p class="eyebrow">PROFILE <span class="heading-number">01</span></p>
+                <h2 id="about-title">Thoughtful work.<br><span class="muted-text">Reliable software.</span></h2>
+            </div>
+            <div class="about-content">
+                <p class="about-lead">I care about the details people notice—and the engineering that makes products dependable.</p>
+                <p class="about-body">I work across the stack to make products feel simple, fast, and accessible. I value collaboration, continuous learning, and making each iteration better.</p>
+            </div>
+        </section>
+
+        <section class="work-section section-shell" id="work" aria-labelledby="work-title">
+            <div class="work-heading">
+                <div>
+                    <p class="eyebrow">PROJECT HIGHLIGHTS <span class="heading-number">02</span></p>
+                    <h2 id="work-title">Selected projects<span class="accent-text">.</span></h2>
+                </div>
+                <p class="work-intro">Example entries for your project experience. Replace them with projects you’ve actually worked on.</p>
+            </div>
+            <div class="project-grid">
+                <article class="project-card">
+                    <div class="project-meta"><div><p class="project-type">PRODUCT ENGINEERING · 2025</p><h3>Insight, at a glance.</h3></div><span class="project-arrow" aria-hidden="true">↗</span></div>
+                    <p class="project-description">A sample analytics experience that brings the important signals into focus.</p>
+                    <div class="project-tags"><span>TypeScript</span><span>Data visualization</span><span>UI design</span></div>
+                </article>
+                <article class="project-card">
+                    <div class="project-meta"><div><p class="project-type">OPEN SOURCE · 2024</p><h3>Tools for the makers.</h3></div><span class="project-arrow" aria-hidden="true">↗</span></div>
+                    <p class="project-description">A sample developer toolkit built to make everyday workflows a little smoother.</p>
+                    <div class="project-tags"><span>Node.js</span><span>Automation</span><span>Open source</span></div>
+                </article>
+                <article class="project-card">
+                    <div class="project-meta"><div><p class="project-type">COMMUNITY · 2024</p><h3>Growing together.</h3></div><span class="project-arrow" aria-hidden="true">↗</span></div>
+                    <p class="project-description">A sample community space connecting people around shared interests.</p>
+                    <div class="project-tags"><span>Full stack</span><span>Community</span><span>Accessibility</span></div>
+                </article>
+            </div>
+        </section>
+
+        <section class="contact-section section-shell" id="contact" aria-labelledby="contact-title">
+            <p class="eyebrow">HAVE A GOOD ONE IN MIND? <span class="heading-number">03</span></p>
+            <div class="contact-layout">
+                <h2 id="contact-title">Let’s make<br>something <span class="accent-text">matter.</span></h2>
+                <div class="contact-copy"><p>I’m always happy to meet good people and hear about interesting problems.</p><a class="button button-primary" href="mailto:hello@example.com">Get in touch <span aria-hidden="true">↗</span></a></div>
+            </div>
+        </section>
+    </main>
+
+    <footer class="site-footer page-shell">
+        <a class="wordmark footer-wordmark" href="#top">EHN<span>.</span></a>
+        <p>Software Engineer</p>
+        <p>© <span id="current-year"></span> Elias Harvey-Nilsson</p>
+    </footer>
+</body>
+</html>
