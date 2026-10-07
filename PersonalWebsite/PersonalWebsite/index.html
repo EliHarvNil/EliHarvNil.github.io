@@ -1,11 +1,34 @@
 <!doctype html>
-<html lang="en" data-theme="midnight">
+<html lang="en" data-theme="cobalt">
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <meta name="theme-color" content="#101311">
-    <meta name="description" content="The personal portfolio of a software engineer who builds and collaborates.">
-    <title>Elias Harvey-Nilsson — Software Engineer</title>
+    <meta name="theme-color" content="#f1f3f6">
+    <meta name="description" content="Elias Harvey-Nilsson is a senior software engineer focused on .NET, Azure, cloud systems, and integrations.">
+    <title>Elias Harvey-Nilsson — Senior Software Engineer, .NET &amp; Azure</title>
+    <link rel="canonical" href="https://harvnil.com/">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://harvnil.com/">
+    <meta property="og:title" content="Elias Harvey-Nilsson — Senior Software Engineer, .NET &amp; Azure">
+    <meta property="og:description" content="Senior software engineer focused on .NET, Azure, cloud systems, and integrations.">
+    <meta property="og:site_name" content="Elias Harvey-Nilsson">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Elias Harvey-Nilsson — Senior Software Engineer, .NET &amp; Azure">
+    <meta name="twitter:description" content="Senior software engineer focused on .NET, Azure, cloud systems, and integrations.">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Elias Harvey-Nilsson",
+            "jobTitle": "Senior Software Engineer",
+            "url": "https://harvnil.com/",
+            "email": "eli@harvnil.com",
+            "sameAs": [
+                "https://www.linkedin.com/in/elias-harvey-nilsson/"
+            ]
+        }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,29 +36,46 @@
     <script src="dist/app.js" type="module"></script>
 </head>
 <body>
-    <site-header page-title="Software Engineer" title-layout="site-first"></site-header>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <site-header page-title="Senior Software Engineer, .NET &amp; Azure" title-layout="site-first">
+        <header class="site-header">
+            <a class="wordmark" href="#top" aria-label="Elias Harvey-Nilsson, home">Eli<span>.</span>Harv-Nil</a>
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="#about">Profile</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+    </site-header>
 
-    <main id="top">
-        <section class="hero page-shell" aria-labelledby="hero-title">
+    <main id="main-content" tabindex="-1">
+        <section class="hero page-shell" id="top" aria-labelledby="hero-title">
             <div class="hero-copy">
-                <p class="eyebrow"><span class="status-dot"></span> SOFTWARE ENGINEER <span class="eyebrow-divider">/</span> OPEN TO OPPORTUNITIES</p>
+                <p class="eyebrow"><span class="status-dot"></span> OPEN TO SENIOR SOFTWARE ENGINEERING ROLES</p>
                 <h1 id="hero-title">Elias<br><span class="accent-text">Harvey-Nilsson.</span></h1>
-                <p class="hero-role">Software Engineer</p>
-                <p class="hero-description">I build clear, dependable digital experiences and enjoy turning complex problems into useful software.</p>
+                <p class="hero-role">.NET · Azure · Cloud Systems</p>
+                <p class="hero-description">I build reliable cloud software, integrations, and internal tools that help teams move work forward.</p>
                 <div class="hero-actions">
-                    <a class="button button-primary" href="#work">View projects <span aria-hidden="true">↘</span></a>
-                    <a class="text-link" href="mailto:hello@example.com">Email me <span aria-hidden="true">↗</span></a>
+                    <div class="hero-action-row">
+                        <a class="button button-primary" href="resume/Elias Harvey-Nilsson - Software Engineer.pdf" download>Download resume</a>
+                        <a class="button button-secondary" href="mailto:eli@harvnil.com">Email</a>
+                        <a class="button button-secondary" href="https://www.linkedin.com/in/elias-harvey-nilsson/" target="_blank" rel="noopener noreferrer">View LinkedIn</a>
+                    </div>
                 </div>
                 <div class="hero-note"><span class="note-line"></span><span>Focused on thoughtful software and collaborative teams.</span></div>
             </div>
             <div class="hero-summary">
-                <p class="eyebrow">CORE STRENGTHS</p>
+                <p class="eyebrow">TECHNICAL FOCUS</p>
                 <ul class="strength-list">
-                    <li>Product engineering</li>
-                    <li>Web applications</li>
-                    <li>Accessible interfaces</li>
-                    <li>Design systems</li>
-                    <li>Developer tools</li>
+                    <li>C# &amp; .NET</li>
+                    <li>Microsoft Azure</li>
+                    <li>Terraform &amp; CI/CD</li>
+                    <li>API integrations</li>
+                    <li>Observability</li>
+                    <li>Modernization</li>
+                    <li>Security</li>
+                    <li>Full Stack Development</li>
+                    
                 </ul>
             </div>
         </section>
@@ -43,11 +83,12 @@
         <section class="about-section section-shell" id="about" aria-labelledby="about-title">
             <div class="section-heading">
                 <p class="eyebrow">PROFILE <span class="heading-number">01</span></p>
-                <h2 id="about-title">Thoughtful work.<br><span class="muted-text">Reliable software.</span></h2>
+                <h2 id="about-title">Reliable Software.<br><span class="muted-text">Thoughtful Work.</span></h2>
             </div>
             <div class="about-content">
-                <p class="about-lead">I care about the details people notice—and the engineering that makes products dependable.</p>
-                <p class="about-body">I work across the stack to make products feel simple, fast, and accessible. I value collaboration, continuous learning, and making each iteration better.</p>
+                <p class="about-lead">I care about the details, and the engineering that makes products dependable.</p>
+                <p class="about-body">I work across the stack to make products feel simple and fast.</p>
+                <p class="about-body">I pair tested integrations with production monitoring to help teams catch issues sooner.</p>
             </div>
         </section>
 
@@ -55,55 +96,90 @@
             <div class="work-heading">
                 <div>
                     <p class="eyebrow">CAREER <span class="heading-number">02</span></p>
-                    <h2 id="experience-title">Work history<span class="accent-text">.</span></h2>
+                    <h2 id="experience-title">Work History<span class="accent-text">.</span></h2>
                 </div>
-                <p class="work-intro">Add your roles, dates, and measurable contributions here to build a resume-ready career history.</p>
+                <p class="work-intro">Experience building reliable cloud software, integrations, developer tooling, and administrative solutions.</p>
             </div>
             <div class="experience-list">
                 <article class="experience-entry">
-                    <div class="experience-date">YYYY — Present</div>
+                    <div class="experience-date">Jun 2023 — Present</div>
                     <div class="experience-details">
-                        <h3>Job title</h3>
-                        <p class="experience-company">Company or organization · Location</p>
+                        <h3>Senior Software Engineer</h3>
+                        <p class="experience-company">Far Bank Enterprises · Seattle, Washington · Hybrid</p>
                         <ul>
-                            <li>Describe a key responsibility, project, or achievement and the result it delivered.</li>
-                            <li>Include relevant tools, technologies, or measurable outcomes.</li>
+                            <li>Led engineering across B2B and manufacturing services, maintaining 13 services and owning CI/CD, cloud migration, and reliability.</li>
+                            <li>Migrated services from .NET 6 to .NET 10 and moved on-premises infrastructure to Azure.</li>
+                            <li>Reduced Dynamics 365 update work from hours to about 30 minutes with a tested integration library and automated Azure DevOps packaging.</li>
+                            <li>Built reusable Terraform-driven Azure DevOps pipelines and implemented Azure Monitor across 10 services, reducing incident response time by 30%.</li>
                         </ul>
                     </div>
                 </article>
                 <article class="experience-entry">
-                    <div class="experience-date">YYYY — YYYY</div>
+                    <div class="experience-date">Aug 2021 — Jan 2023</div>
                     <div class="experience-details">
-                        <h3>Previous job title</h3>
-                        <p class="experience-company">Company or organization · Location</p>
+                        <h3>Software Engineer II</h3>
+                        <p class="experience-company">mParticle · New York, United States · Remote</p>
                         <ul>
-                            <li>Summarize your contribution and its impact using specific, active language.</li>
+                            <li>Led a bidirectional integration between the company API and Klaviyo API for real-time and bulk updates.</li>
+                            <li>Built developer metrics for pull request age and stalled builds, and helped improve pipeline safety during the transition to CI/CD.</li>
+                        </ul>
+                    </div>
+                </article>
+                <article class="experience-entry">
+                    <div class="experience-date">Oct 2018 — Jul 2021</div>
+                    <div class="experience-details">
+                        <h3>Software Engineer</h3>
+                        <p class="experience-company">SkyKick · Greater Seattle Area</p>
+                        <ul>
+                            <li>Rebuilt the Microsoft 365 server-side email transfer service using C#, Docker, and SQL.</li>
+                            <li>Cut deployment time from seven hours to 15 minutes by integrating Terraform with Azure Pipelines.</li>
+                            <li>Created a backend-for-frontend service to accelerate frontend integration and support customer migrations to Microsoft cloud.</li>
+                        </ul>
+                    </div>
+                </article>
+                <article class="experience-entry">
+                    <div class="experience-date">Apr 2017 — Aug 2018</div>
+                    <div class="experience-details">
+                        <h3>Cloud Software Engineer</h3>
+                        <p class="experience-company">Centrify Corporation · Bellevue, Washington</p>
+                        <ul>
+                            <li>Built Reverse Proxy features and encrypted Azure backups for NoSQL data.</li>
+                            <li>Reduced HTTP transaction time from two minutes to 15 seconds for a government services provider by resolving resource contention.</li>
+                            <li>Resolved a critical customer-vendor issue that helped preserve a multimillion-dollar deal.</li>
+                        </ul>
+                    </div>
+                </article>
+                <article class="experience-entry">
+                    <div class="experience-date">2016</div>
+                    <div class="experience-details">
+                        <h3>Cloud Software Intern</h3>
+                        <p class="experience-company">Centrify Corporation · Bellevue, Washington</p>
+                        <ul>
+                            <li>Developed PowerShell test automation that reduced setup time to seconds, plus JavaScript API and GUI smoke tests.</li>
                         </ul>
                     </div>
                 </article>
             </div>
         </section>
 
-        <section class="work-section section-shell" id="work" aria-labelledby="work-title">
-            <div class="work-heading">
-                <div>
-                    <p class="eyebrow">PROJECT HIGHLIGHTS <span class="heading-number">03</span></p>
-                    <h2 id="work-title">Selected projects<span class="accent-text">.</span></h2>
-                </div>
-                <p class="work-intro">Example entries for your project experience. Replace them with projects you’ve actually worked on.</p>
-            </div>
-            <div class="project-grid" aria-live="polite" aria-busy="true"></div>
-        </section>
-
         <section class="contact-section section-shell" id="contact" aria-labelledby="contact-title">
-            <p class="eyebrow">HAVE A GOOD ONE IN MIND? <span class="heading-number">04</span></p>
+            <p class="eyebrow">GET IN TOUCH <span class="heading-number">03</span></p>
             <div class="contact-layout">
-                <h2 id="contact-title">Let’s make<br>something <span class="accent-text">matter.</span></h2>
-                <div class="contact-copy"><p>I’m always happy to meet good people and hear about interesting problems.</p><a class="button button-primary" href="mailto:hello@example.com">Get in touch <span aria-hidden="true">↗</span></a></div>
+                <h2 id="contact-title">Get in<br><span class="accent-text">touch.</span></h2>
+                <div class="contact-copy">
+                    <p>If you have senior software engineering opportunities, email me.</p>
+                    <p class="contact-email">Eli@HarvNil.com</p>
+                </div>
             </div>
         </section>
     </main>
 
-    <site-footer></site-footer>
+    <site-footer>
+        <footer class="site-footer page-shell">
+            <a class="wordmark footer-wordmark" href="#top">Eli<span>.</span>Harv-Nil</a>
+            <p>Senior Software Engineer</p>
+            <p>© Elias Harvey-Nilsson</p>
+        </footer>
+    </site-footer>
 </body>
 </html>

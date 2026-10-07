@@ -16,22 +16,15 @@ class SiteHeader extends HTMLElement {
 
         this.innerHTML = `
             <header class="site-header">
-                <a class="wordmark" href="${sectionHref('top')}" aria-label="${siteName}, home">EHN<span>.</span></a>
+                <a class="wordmark" href="${sectionHref('top')}" aria-label="${siteName}, home">Eli<span>.</span>Harv-Nil</a>
                 <nav class="main-nav" aria-label="Main navigation">
                     <a href="${sectionHref('about')}">Profile</a>
                     <a href="${sectionHref('experience')}">Experience</a>
-                    <a href="${sectionHref('work')}">Projects</a>
                     <a href="${sectionHref('contact')}">Contact</a>
+                    <button class="theme-control" id="theme-toggle" type="button" aria-label="Switch to night theme" title="Switch to night theme">
+                        <span class="theme-icon" aria-hidden="true">☀</span>
+                    </button>
                 </nav>
-                <label class="theme-control" for="theme-picker">
-                    <span class="theme-icon" aria-hidden="true">◐</span>
-                    <span class="visually-hidden">Color theme</span>
-                    <select id="theme-picker" aria-label="Color theme">
-                        <option value="midnight">Midnight</option>
-                        <option value="paper">Paper</option>
-                        <option value="forest">Forest</option>
-                    </select>
-                </label>
             </header>`;
     }
 }
@@ -42,8 +35,8 @@ class SiteFooter extends HTMLElement {
         const homeHref = `${root}index.html#top`;
         this.innerHTML = `
             <footer class="site-footer page-shell">
-                <a class="wordmark footer-wordmark" href="${homeHref}">EHN<span>.</span></a>
-                <p>Software Engineer</p>
+                <a class="wordmark footer-wordmark" href="${homeHref}">Eli<span>.</span>Harv-Nil</a>
+                <p>Senior Software Engineer</p>
                 <p>© <span id="current-year"></span> ${siteName}</p>
             </footer>`;
 
@@ -57,75 +50,9 @@ class SiteFooter extends HTMLElement {
 customElements.define('site-header', SiteHeader);
 customElements.define('site-footer', SiteFooter);
 
-interface ProjectHighlight {
-    order: number;
-    href: string;
-    title: string;
-    category: string;
-    summary: string;
-}
-
-async function loadProjectHighlights(): Promise<void> {
-    const projectGrid = document.querySelector<HTMLElement>('.project-grid');
-    if (!projectGrid) {
-        return;
-    }
-
-    try {
-        const response = await fetch('dist/projects.json');
-        if (!response.ok) {
-            throw new Error(`Project list request failed: ${response.status}`);
-        }
-
-        const projects = await response.json() as ProjectHighlight[];
-        for (const project of projects) {
-            const card = document.createElement('a');
-            card.className = 'project-card';
-            card.href = project.href;
-
-            const meta = document.createElement('div');
-            meta.className = 'project-meta';
-            const details = document.createElement('div');
-            const category = document.createElement('p');
-            category.className = 'project-type';
-            category.textContent = project.category;
-            const title = document.createElement('h3');
-            title.textContent = project.title;
-            details.append(category, title);
-            meta.append(details);
-
-            const summary = document.createElement('p');
-            summary.className = 'project-description';
-            summary.textContent = project.summary;
-
-            const readMore = document.createElement('span');
-            readMore.className = 'project-read-more';
-            readMore.append(document.createTextNode('Read more '));
-            const arrow = document.createElement('span');
-            arrow.setAttribute('aria-hidden', 'true');
-            arrow.textContent = '↗';
-            readMore.append(arrow);
-
-            card.append(meta, summary, readMore);
-            projectGrid.append(card);
-        }
-
-        projectGrid.setAttribute('aria-busy', 'false');
-    } catch (error) {
-        const message = document.createElement('p');
-        message.className = 'project-description';
-        message.textContent = 'Project highlights could not be loaded.';
-        projectGrid.append(message);
-        projectGrid.setAttribute('aria-busy', 'false');
-        console.error(error);
-    }
-}
-
-void loadProjectHighlights();
-
-const themePicker = document.querySelector<HTMLSelectElement>('#theme-picker');
+const themeToggle = document.querySelector<HTMLButtonElement>('#theme-toggle');
 const themeStorageKey = 'personal-site-theme';
-const themes = ['midnight', 'paper', 'forest'] as const;
+const themes = ['cobalt', 'midnight'] as const;
 type Theme = (typeof themes)[number];
 
 function isTheme(value: string | null): value is Theme {
@@ -134,8 +61,14 @@ function isTheme(value: string | null): value is Theme {
 
 function applyTheme(theme: Theme): void {
     document.documentElement.dataset.theme = theme;
-    if (themePicker) {
-        themePicker.value = theme;
+    if (themeToggle) {
+        const nextTheme = theme === 'cobalt' ? 'night' : 'day';
+        const icon = themeToggle.querySelector<HTMLElement>('.theme-icon');
+        themeToggle.setAttribute('aria-label', `Switch to ${nextTheme} theme`);
+        themeToggle.title = `Switch to ${nextTheme} theme`;
+        if (icon) {
+            icon.textContent = theme === 'cobalt' ? '☀' : '☾';
+        }
     }
 }
 
@@ -146,14 +79,10 @@ try {
     savedTheme = null;
 }
 
-applyTheme(isTheme(savedTheme) ? savedTheme : 'midnight');
+applyTheme(isTheme(savedTheme) ? savedTheme : 'cobalt');
 
-themePicker?.addEventListener('change', () => {
-    const selectedTheme = themePicker.value;
-    if (!isTheme(selectedTheme)) {
-        return;
-    }
-
+themeToggle?.addEventListener('click', () => {
+    const selectedTheme = document.documentElement.dataset.theme === 'cobalt' ? 'midnight' : 'cobalt';
     applyTheme(selectedTheme);
     try {
         window.localStorage.setItem(themeStorageKey, selectedTheme);
