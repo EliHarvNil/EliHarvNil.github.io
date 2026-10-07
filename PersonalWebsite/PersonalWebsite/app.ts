@@ -16,22 +16,15 @@ class SiteHeader extends HTMLElement {
 
         this.innerHTML = `
             <header class="site-header">
-                <a class="wordmark" href="${sectionHref('top')}" aria-label="${siteName}, home">Elias<span>.</span></a>
+                <a class="wordmark" href="${sectionHref('top')}" aria-label="${siteName}, home">Eli<span>.</span></a>
                 <nav class="main-nav" aria-label="Main navigation">
                     <a href="${sectionHref('about')}">Profile</a>
                     <a href="${sectionHref('experience')}">Experience</a>
-                    <a href="${sectionHref('work')}">Projects</a>
                     <a href="${sectionHref('contact')}">Contact</a>
+                    <button class="theme-control" id="theme-toggle" type="button" aria-label="Switch to night theme" title="Switch to night theme">
+                        <span class="theme-icon" aria-hidden="true">☀</span>
+                    </button>
                 </nav>
-                <label class="theme-control" for="theme-picker">
-                    <span class="theme-icon" aria-hidden="true">◐</span>
-                    <span class="visually-hidden">Color theme</span>
-                    <select id="theme-picker" aria-label="Color theme">
-                        <option value="cobalt">Engaging</option>
-                        <option value="mist">Clarifying</option>
-                        <option value="midnight">Summarizing</option>
-                    </select>
-                </label>
             </header>`;
     }
 }
@@ -42,8 +35,8 @@ class SiteFooter extends HTMLElement {
         const homeHref = `${root}index.html#top`;
         this.innerHTML = `
             <footer class="site-footer page-shell">
-                <a class="wordmark footer-wordmark" href="${homeHref}">Elias<span>.</span></a>
-                <p>Software Engineer</p>
+                <a class="wordmark footer-wordmark" href="${homeHref}">Eli<span>.</span></a>
+                <p>Senior Software Engineer</p>
                 <p>© <span id="current-year"></span> ${siteName}</p>
             </footer>`;
 
@@ -67,7 +60,7 @@ interface ProjectHighlight {
 
 async function loadProjectHighlights(): Promise<void> {
     const projectGrid = document.querySelector<HTMLElement>('.project-grid');
-    if (!projectGrid) {
+    if (!projectGrid || projectGrid.closest('[hidden]')) {
         return;
     }
 
@@ -132,6 +125,7 @@ document.querySelectorAll<HTMLButtonElement>('[data-copy-email]').forEach((butto
         if (!email || !copyEmailStatus || !label) {
             return;
         }
+        const originalLabel = label.textContent ?? email;
 
         try {
             await navigator.clipboard.writeText(email);
@@ -145,7 +139,7 @@ document.querySelectorAll<HTMLButtonElement>('[data-copy-email]').forEach((butto
                 window.clearTimeout(previousTimer);
             }
             copyEmailFeedbackTimers.set(button, window.setTimeout(() => {
-                label.textContent = email;
+                label.textContent = originalLabel;
                 button.classList.remove('is-copied');
                 button.setAttribute('aria-label', `Copy ${email} to clipboard`);
             }, 1800));
@@ -155,9 +149,9 @@ document.querySelectorAll<HTMLButtonElement>('[data-copy-email]').forEach((butto
     });
 });
 
-const themePicker = document.querySelector<HTMLSelectElement>('#theme-picker');
+const themeToggle = document.querySelector<HTMLButtonElement>('#theme-toggle');
 const themeStorageKey = 'personal-site-theme';
-const themes = ['cobalt', 'mist', 'midnight'] as const;
+const themes = ['cobalt', 'midnight'] as const;
 type Theme = (typeof themes)[number];
 
 function isTheme(value: string | null): value is Theme {
@@ -166,8 +160,14 @@ function isTheme(value: string | null): value is Theme {
 
 function applyTheme(theme: Theme): void {
     document.documentElement.dataset.theme = theme;
-    if (themePicker) {
-        themePicker.value = theme;
+    if (themeToggle) {
+        const nextTheme = theme === 'cobalt' ? 'night' : 'day';
+        const icon = themeToggle.querySelector<HTMLElement>('.theme-icon');
+        themeToggle.setAttribute('aria-label', `Switch to ${nextTheme} theme`);
+        themeToggle.title = `Switch to ${nextTheme} theme`;
+        if (icon) {
+            icon.textContent = theme === 'cobalt' ? '☀' : '☾';
+        }
     }
 }
 
@@ -180,12 +180,8 @@ try {
 
 applyTheme(isTheme(savedTheme) ? savedTheme : 'cobalt');
 
-themePicker?.addEventListener('change', () => {
-    const selectedTheme = themePicker.value;
-    if (!isTheme(selectedTheme)) {
-        return;
-    }
-
+themeToggle?.addEventListener('click', () => {
+    const selectedTheme = document.documentElement.dataset.theme === 'cobalt' ? 'midnight' : 'cobalt';
     applyTheme(selectedTheme);
     try {
         window.localStorage.setItem(themeStorageKey, selectedTheme);
