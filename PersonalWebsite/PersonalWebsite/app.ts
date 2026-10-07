@@ -16,7 +16,7 @@ class SiteHeader extends HTMLElement {
 
         this.innerHTML = `
             <header class="site-header">
-                <a class="wordmark" href="${sectionHref('top')}" aria-label="${siteName}, home">EHN<span>.</span></a>
+                <a class="wordmark" href="${sectionHref('top')}" aria-label="${siteName}, home">Elias<span>.</span></a>
                 <nav class="main-nav" aria-label="Main navigation">
                     <a href="${sectionHref('about')}">Profile</a>
                     <a href="${sectionHref('experience')}">Experience</a>
@@ -27,9 +27,9 @@ class SiteHeader extends HTMLElement {
                     <span class="theme-icon" aria-hidden="true">◐</span>
                     <span class="visually-hidden">Color theme</span>
                     <select id="theme-picker" aria-label="Color theme">
-                        <option value="midnight">Midnight</option>
-                        <option value="paper">Paper</option>
-                        <option value="forest">Forest</option>
+                        <option value="cobalt">Engaging</option>
+                        <option value="mist">Clarifying</option>
+                        <option value="midnight">Summarizing</option>
                     </select>
                 </label>
             </header>`;
@@ -42,7 +42,7 @@ class SiteFooter extends HTMLElement {
         const homeHref = `${root}index.html#top`;
         this.innerHTML = `
             <footer class="site-footer page-shell">
-                <a class="wordmark footer-wordmark" href="${homeHref}">EHN<span>.</span></a>
+                <a class="wordmark footer-wordmark" href="${homeHref}">Elias<span>.</span></a>
                 <p>Software Engineer</p>
                 <p>© <span id="current-year"></span> ${siteName}</p>
             </footer>`;
@@ -123,9 +123,41 @@ async function loadProjectHighlights(): Promise<void> {
 
 void loadProjectHighlights();
 
+const copyEmailStatus = document.querySelector<HTMLElement>('#copy-email-status');
+const copyEmailFeedbackTimers = new WeakMap<HTMLButtonElement, number>();
+document.querySelectorAll<HTMLButtonElement>('[data-copy-email]').forEach((button) => {
+    button.addEventListener('click', async () => {
+        const email = button.dataset.copyEmail;
+        const label = button.querySelector('span');
+        if (!email || !copyEmailStatus || !label) {
+            return;
+        }
+
+        try {
+            await navigator.clipboard.writeText(email);
+            label.textContent = 'Copied!';
+            button.classList.add('is-copied');
+            button.setAttribute('aria-label', 'Email address copied to clipboard');
+            copyEmailStatus.textContent = 'Email address copied.';
+
+            const previousTimer = copyEmailFeedbackTimers.get(button);
+            if (previousTimer !== undefined) {
+                window.clearTimeout(previousTimer);
+            }
+            copyEmailFeedbackTimers.set(button, window.setTimeout(() => {
+                label.textContent = email;
+                button.classList.remove('is-copied');
+                button.setAttribute('aria-label', `Copy ${email} to clipboard`);
+            }, 1800));
+        } catch {
+            copyEmailStatus.textContent = 'Could not copy the email address. Select and copy it instead.';
+        }
+    });
+});
+
 const themePicker = document.querySelector<HTMLSelectElement>('#theme-picker');
 const themeStorageKey = 'personal-site-theme';
-const themes = ['midnight', 'paper', 'forest'] as const;
+const themes = ['cobalt', 'mist', 'midnight'] as const;
 type Theme = (typeof themes)[number];
 
 function isTheme(value: string | null): value is Theme {
@@ -146,7 +178,7 @@ try {
     savedTheme = null;
 }
 
-applyTheme(isTheme(savedTheme) ? savedTheme : 'midnight');
+applyTheme(isTheme(savedTheme) ? savedTheme : 'cobalt');
 
 themePicker?.addEventListener('change', () => {
     const selectedTheme = themePicker.value;
