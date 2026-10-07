@@ -6,6 +6,29 @@
     <meta name="theme-color" content="#f1f3f6">
     <meta name="description" content="Elias Harvey-Nilsson is a senior software engineer focused on .NET, Azure, cloud systems, and integrations.">
     <title>Elias Harvey-Nilsson — Senior Software Engineer, .NET &amp; Azure</title>
+    <link rel="canonical" href="https://harvnil.com/">
+    <link rel="icon" type="image/svg+xml" href="favicon.svg">
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://harvnil.com/">
+    <meta property="og:title" content="Elias Harvey-Nilsson — Senior Software Engineer, .NET &amp; Azure">
+    <meta property="og:description" content="Senior software engineer focused on .NET, Azure, cloud systems, and integrations.">
+    <meta property="og:site_name" content="Elias Harvey-Nilsson">
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Elias Harvey-Nilsson — Senior Software Engineer, .NET &amp; Azure">
+    <meta name="twitter:description" content="Senior software engineer focused on .NET, Azure, cloud systems, and integrations.">
+    <script type="application/ld+json">
+        {
+            "@context": "https://schema.org",
+            "@type": "Person",
+            "name": "Elias Harvey-Nilsson",
+            "jobTitle": "Senior Software Engineer",
+            "url": "https://harvnil.com/",
+            "email": "eli@harvnil.com",
+            "sameAs": [
+                "https://www.linkedin.com/in/elias-harvey-nilsson/"
+            ]
+        }
+    </script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
@@ -13,26 +36,29 @@
     <script src="dist/app.js" type="module"></script>
 </head>
 <body>
-    <site-header page-title="Senior Software Engineer, .NET &amp; Azure" title-layout="site-first"></site-header>
+    <a class="skip-link" href="#main-content">Skip to main content</a>
+    <site-header page-title="Senior Software Engineer, .NET &amp; Azure" title-layout="site-first">
+        <header class="site-header">
+            <a class="wordmark" href="#top" aria-label="Elias Harvey-Nilsson, home">Eli<span>.</span>Harv-Nil</a>
+            <nav class="main-nav" aria-label="Main navigation">
+                <a href="#about">Profile</a>
+                <a href="#experience">Experience</a>
+                <a href="#contact">Contact</a>
+            </nav>
+        </header>
+    </site-header>
 
-    <main id="top">
-        <section class="hero page-shell" aria-labelledby="hero-title">
+    <main id="main-content" tabindex="-1">
+        <section class="hero page-shell" id="top" aria-labelledby="hero-title">
             <div class="hero-copy">
                 <p class="eyebrow"><span class="status-dot"></span> OPEN TO SENIOR SOFTWARE ENGINEERING ROLES</p>
                 <h1 id="hero-title">Elias<br><span class="accent-text">Harvey-Nilsson.</span></h1>
                 <p class="hero-role">.NET · Azure · Cloud Systems</p>
-                <p class="hero-description">I apply transferable engineering fundamentals across languages and tools to build reliable cloud software, integrations, and tools.</p>
+                <p class="hero-description">I build reliable cloud software, integrations, and internal tools that help teams move work forward.</p>
                 <div class="hero-actions">
-                    <!--<a class="button button-primary" href="#work">View projects <span aria-hidden="true">↘</span></a>-->
                     <div class="hero-action-row">
-                        <a class="button button-primary" href="mailto:eli@harvnil.com">eli@harvnil.com</a>
                         <a class="button button-primary" href="resume/Elias Harvey-Nilsson - Software Engineer.pdf" download>Download resume</a>
-                    </div>
-                    <div class="hero-action-row">
-                        <button class="button button-secondary email-copy-button" type="button" data-copy-email="eli@harvnil.com" aria-label="Copy eli@harvnil.com to clipboard" title="Copy email address">
-                            <span>Copy email</span>
-                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="8" y="8" width="12" height="12" rx="2"></rect><path d="M16 8V5a2 2 0 0 0-2-2H5a2 2 0 0 0-2 2v9a2 2 0 0 0 2 2h3"></path></svg>
-                        </button>
+                        <a class="button button-secondary" href="mailto:eli@harvnil.com">Email</a>
                         <a class="button button-secondary" href="https://www.linkedin.com/in/elias-harvey-nilsson/" target="_blank" rel="noopener noreferrer">View LinkedIn</a>
                     </div>
                 </div>
@@ -62,7 +88,7 @@
             <div class="about-content">
                 <p class="about-lead">I care about the details, and the engineering that makes products dependable.</p>
                 <p class="about-body">I work across the stack to make products feel simple and fast.</p>
-                <p class="about-body">I value collaboration, continuous learning, and making each iteration better than the last.</p>
+                <p class="about-body">I pair tested integrations with production monitoring to help teams catch issues sooner.</p>
             </div>
         </section>
 
@@ -82,7 +108,7 @@
                         <p class="experience-company">Far Bank Enterprises · Seattle, Washington · Hybrid</p>
                         <ul>
                             <li>Led engineering across B2B and manufacturing services, maintaining 13 services and owning CI/CD, cloud migration, and reliability.</li>
-                            <li>Migrated services from .NET 6 to .NET 10 and on-premises infrastructure to Azure for better performance and reliability.</li>
+                            <li>Migrated services from .NET 6 to .NET 10 and moved on-premises infrastructure to Azure.</li>
                             <li>Reduced Dynamics 365 update work from hours to about 30 minutes with a tested integration library and automated Azure DevOps packaging.</li>
                             <li>Built reusable Terraform-driven Azure DevOps pipelines and implemented Azure Monitor across 10 services, reducing incident response time by 30%.</li>
                         </ul>
@@ -136,30 +162,24 @@
             </div>
         </section>
 
-        <section class="work-section section-shell" id="work" aria-labelledby="work-title" hidden>
-            <div class="work-heading">
-                <div>
-                    <p class="eyebrow">PROJECT HIGHLIGHTS <span class="heading-number">03</span></p>
-                    <h2 id="work-title">Personal Projects<span class="accent-text">.</span></h2>
-                </div>
-                <p class="work-intro">Current and past projects that showcase my skills and interests beyond my professional work.</p>
-            </div>
-            <div class="project-grid" aria-live="polite" aria-busy="true"></div>
-        </section>
-
         <section class="contact-section section-shell" id="contact" aria-labelledby="contact-title">
-            <p class="eyebrow">GET IN TOUCH <span class="heading-number">04</span></p>
+            <p class="eyebrow">GET IN TOUCH <span class="heading-number">03</span></p>
             <div class="contact-layout">
                 <h2 id="contact-title">Get in<br><span class="accent-text">touch.</span></h2>
                 <div class="contact-copy">
                     <p>If you have senior software engineering opportunities, email me.</p>
-                    <a class="button button-primary" href="mailto:eli@harvnil.com">eli@harvnil.com</a>
-                    <span class="visually-hidden" id="copy-email-status" aria-live="polite"></span>
+                    <p class="contact-email">Eli@HarvNil.com</p>
                 </div>
             </div>
         </section>
     </main>
 
-    <site-footer></site-footer>
+    <site-footer>
+        <footer class="site-footer page-shell">
+            <a class="wordmark footer-wordmark" href="#top">Eli<span>.</span>Harv-Nil</a>
+            <p>Senior Software Engineer</p>
+            <p>© Elias Harvey-Nilsson</p>
+        </footer>
+    </site-footer>
 </body>
 </html>
