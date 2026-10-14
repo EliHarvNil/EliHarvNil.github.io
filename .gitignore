@@ -1,6 +1,6 @@
 PersonalWebsite/PersonalWebsite/dist/
 PersonalWebsite/PersonalWebsite/node_modules/
-/.github
+/.github/scenarios
 /.vs
 /PersonalWebsite/.vs
 /PersonalWebsite/PersonalWebsite/.vscode
